@@ -1,0 +1,12 @@
+<h1>Admin Portal</h1>
+<% if(user && user.role === 'admin'){ %>
+  <p>Welcome <strong><%= user.username || user.displayName %></strong> (admin)!</p>
+  <ul>
+    <li>Delete user accounts</li>
+    <li>View/manage user list</li>
+    <li>See all API tokens</li>
+    <li>More to come...</li>
+  </ul>
+<% } else { %>
+  <p>You must be an admin to view this page.</p>
+<% } %>

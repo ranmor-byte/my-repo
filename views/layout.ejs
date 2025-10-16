@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= typeof title !== 'undefined' ? title : 'Portal' %></title>
+  <style>
+    nav {
+      background: linear-gradient(90deg, #1976d2 40%, #64b5f6 100%); 
+      padding: 17px 0 13px 0; 
+      box-shadow: 0 2px 12px #b2cdf733; 
+      margin-bottom: 34px;
+    }
+    nav .nav-inner {
+      max-width: 950px; margin: 0 auto; display: flex; gap: 14px; align-items: center;
+    }
+    nav a { text-decoration: none; color: #fff; font-weight: 500; margin-right: 9px; font-size:1.02em; }
+    nav a.nav-home { font-weight:700; font-size:1.10em; margin-right:18px; letter-spacing: .5px; }
+    nav a.hidden { display: none; }
+    nav a.admin { color: #eef8bc; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-home" href="/">Home</a>
+      <% if (!user) { %>
+          <a href="/signup">Sign Up</a>
+          <a href="/login">Login</a>
+      <% } else { %>
+          <a href="/profile">Profile</a>
+          <a href="/profile/edit">Edit Profile</a>
+          <a href="/profile/tokens">API Tokens</a>
+          <a href="/logout">Logout</a>
+          <% if (isAdmin) { %>
+              <a class="admin" href="/admin">Admin Interface</a>
+          <% } %>
+      <% } %>
+    </div>
+  </nav>
+  <main style="max-width:900px;margin:0 auto;">
+    <% if(typeof error !== 'undefined'){ %><div style="background:#ffe8e5;color:#9a1d1d;padding:12px 20px;border-radius:8px;"> <%= error %> </div><% } %>
+    <%- body %>
+  </main>
+</body>
+</html>

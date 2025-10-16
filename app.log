@@ -1,0 +1,6 @@
+2025-10-16T13:47:52.632Z info: Server start sequence
+2025-10-16T13:47:52.635Z info: Server running on http://localhost:3000
+2025-10-16T13:47:52.636Z info: Users table ensured
+2025-10-16T13:47:52.637Z info: Added profile columns to users table
+2025-10-16T13:48:18.357Z info: ::ffff:127.0.0.1 - - [16/Oct/2025:13:48:18 +0000] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 187 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+2025-10-16T13:48:18.375Z info: ::ffff:127.0.0.1 - - [16/Oct/2025:13:48:18 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"

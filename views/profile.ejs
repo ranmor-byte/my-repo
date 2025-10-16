@@ -1,0 +1,11 @@
+<h1>Welcome, <%= user.username || user.displayName %>!</h1>
+<p><strong>Role:</strong> <%= user.role %></p>
+<% if(user.bio){ %><p><strong>Bio:</strong> <%= user.bio %></p><% } %>
+<% if(user.profile_picture){ %><img src="/uploads/profile_pics/<%= user.profile_picture %>" height="80"><% } %>
+<% if(user.social_links){ %>
+  <h4>Social:</h4>
+  <pre style="font-size:1em;background:#f7f5fa;padding:7px 10px;border-radius:6px;overflow-x:auto;"> <%= user.social_links %> </pre>
+<% } %>
+<div style="margin-top:17px">
+  <a href="/profile/edit">Edit Profile</a> | <a href="/profile/tokens">API Tokens</a>
+</div>

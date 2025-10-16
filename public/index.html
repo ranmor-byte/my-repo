@@ -7,6 +7,17 @@
     <title>User Form</title>
 </head>
 <body>
+    <nav style="background:linear-gradient(90deg, #1976d2 40%, #64b5f6 100%);padding:17px 0 13px 0;box-shadow:0 2px 12px #b2cdf733;margin-bottom:34px;">
+        <div style="max-width:950px;margin:0 auto;display:flex;gap:14px;align-items:center;">
+          <a href="/" style="text-decoration:none;color:#fff;font-weight:700;font-size:1.1em;margin-right:18px;letter-spacing:.5px;">Home</a>
+          <a href="/signup" style="text-decoration:none;color:#f1eaea;font-weight:500;margin-right:9px;">Sign Up</a>
+          <a href="/login" style="text-decoration:none;color:#fff;font-weight:500;margin-right:9px;">Login</a>
+          <a href="/profile" style="text-decoration:none;color:#fff;font-weight:500;margin-right:9px;">Profile</a>
+          <a href="/profile/edit" style="text-decoration:none;color:#fff;font-weight:500;margin-right:9px;">Edit Profile</a>
+          <a href="/profile/tokens" style="text-decoration:none;color:#fff;font-weight:500;margin-right:9px;">API Tokens</a>
+          <a href="/admin" style="text-decoration:none;color:#fff;font-weight:500;">Admin Interface</a>
+        </div>
+    </nav>
     <h1>User Input Form</h1>
     <form action="/submit" method="POST">
         <label for="name">Name:</label>
@@ -23,6 +34,18 @@
         </select><br><br>
         <button type="submit">Submit</button>
     </form>
+    <h2>Or sign up/log in with</h2>
+    <div style="margin: 0 0 20px 0;">
+      <a href="/auth/google" style="display:inline-block;padding:10px 18px;margin-right:8px;background:#fff;color:#444;border-radius:6px;border:1.2px solid #ccc;text-decoration:none;font-weight:500;font-size:1em;box-shadow:0 2px 8px #76a9ea33;vertical-align:middle;">
+          <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" height="24" style="vertical-align: middle; margin-right:7px">Google
+      </a>
+      <a href="/auth/github" style="display:inline-block;padding:10px 18px;margin-right:8px;background:#1a202c;color:#fff;border-radius:6px;text-decoration:none;font-weight:500;font-size:1em;vertical-align:middle;">
+          <img src="https://www.svgrepo.com/show/475654/github.svg" alt="GitHub" height="24" style="vertical-align:middle;margin-right:7px;background:#fff;border-radius:99px;">GitHub
+      </a>
+      <a href="/auth/facebook" style="display:inline-block;padding:10px 18px;background:#1977f2;color:#fff;border-radius:6px;text-decoration:none;font-weight:500;font-size:1em;vertical-align:middle;">
+          <img src="https://www.svgrepo.com/show/452196/facebook-1.svg" alt="Facebook" height="24" style="vertical-align:middle;margin-right:7px;background:#fff;border-radius:99px;">Facebook
+      </a>
+    </div>
     <br>
     <a href="/api/users" target="_blank">View Users JSON (Public REST API)</a>
 </body>

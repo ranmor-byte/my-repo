@@ -1,0 +1,7 @@
+<% if (user) { %>
+  <h2>Welcome, <%= user.username || user.displayName %>!</h2>
+  <p>You are <strong><%= user.role %></strong>. Explore your portal from the main menu above.</p>
+<% } else { %>
+  <h2>Welcome to the Web Portal!</h2>
+  <p>Please <a href="/signup">sign up</a> or <a href="/login">log in</a> to begin. Use the menu above to explore functionality.</p>
+<% } %>

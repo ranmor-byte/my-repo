@@ -1,0 +1,13 @@
+<h1>Edit Profile</h1>
+<form action="/profile/edit" method="POST" enctype="multipart/form-data">
+  <label>Bio:</label><br>
+  <textarea name="bio"><%= user.bio || '' %></textarea><br><br>
+  <label>Profile Picture:</label><br>
+  <% if(user.profile_picture){ %>
+      <img src="/uploads/profile_pics/<%= user.profile_picture %>" height="80"><br>
+  <% } %>
+  <input type="file" name="profile_picture"><br><br>
+  <label>Social (JSON: {"twitter":"","linkedin":""}):</label><br>
+  <input name="social_links" type="text" value='<%= user.social_links || '' %>'><br><br>
+  <button type="submit">Save</button>
+</form>

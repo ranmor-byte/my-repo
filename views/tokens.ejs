@@ -1,0 +1,15 @@
+<h1>API Tokens</h1>
+<form method="POST">
+    <label>Scopes:</label><br>
+    <label><input type="checkbox" name="scopes" value="read" checked> Read</label><br>
+    <label><input type="checkbox" name="scopes" value="add"> Add Users</label><br>
+    <label><input type="checkbox" name="scopes" value="delete"> Delete Users</label><br>
+    <button type="submit">Create Token</button>
+</form>
+<h2>Your Tokens</h2>
+<ul>
+    <% userTokens.forEach(function(t){ %>
+        <li><code><%= t.token %></code> (<%= t.scopes.join(', ') %>)</li>
+    <% }) %>
+</ul>
+<a href="/profile">Back to profile</a>
