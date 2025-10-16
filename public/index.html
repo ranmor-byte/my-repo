@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Form</title>
+</head>
+<body>
+    <h1>User Input Form</h1>
+    <form action="/submit" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required pattern="[A-Za-z\s'-]+"><br><br>
+        <label for="surname">Surname:</label>
+        <input type="text" id="surname" name="surname" required pattern="[A-Za-z\s'-]+"><br><br>
+        <label for="age">Age:</label>
+        <select id="age" name="age" required>
+            <script>
+                for(let i=1; i<=120; i++) {
+                    document.write(`<option value="${i}">${i}</option>`);
+                }
+            </script>
+        </select><br><br>
+        <button type="submit">Submit</button>
+    </form>
+    <br>
+    <a href="/api/users" target="_blank">View Users JSON (Public REST API)</a>
+</body>
+</html>
