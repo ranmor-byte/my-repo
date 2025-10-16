@@ -22,9 +22,33 @@ const createTable = `CREATE TABLE IF NOT EXISTS users (
 );`;
 db.run(createTable);
 
+const BASIC_AUTH_USER = 'admin';
+const BASIC_AUTH_PASS = 'password';
+
+function requireBasicAuth(req, res, next) {
+    const auth = req.headers['authorization'];
+    if (!auth || !auth.startsWith('Basic ')) {
+        res.set('WWW-Authenticate', 'Basic realm="API User"');
+        return res.status(401).send('Authentication required.');
+    }
+    const base64 = auth.split(' ')[1];
+    let [user, pass] = Buffer.from(base64, 'base64').toString().split(':');
+    if (user !== BASIC_AUTH_USER || pass !== BASIC_AUTH_PASS) {
+        res.set('WWW-Authenticate', 'Basic realm="API User"');
+        return res.status(401).send('Invalid credentials.');
+    }
+    return next();
+}
+
+app.use('/api', requireBasicAuth);
+
 // Serve html page
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.get('/admin', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'admin.html'));
 });
 
 // Handle form POST
@@ -44,9 +68,32 @@ app.post('/submit', (req, res) => {
 
 // REST API endpoint to list all users
 app.get('/api/users', (req, res) => {
-    db.all('SELECT name, surname, age FROM users', [], (err, rows) => {
+    db.all('SELECT id, name, surname, age FROM users', [], (err, rows) => {
         if (err) return res.status(500).json({error: 'Database error.'});
         res.json(rows);
+    });
+});
+
+// REST API endpoint to get total user count
+app.get('/api/users/count', (req, res) => {
+    db.get('SELECT COUNT(*) as count FROM users', (err, row) => {
+        if (err) return res.status(500).json({error: 'Database error.'});
+        res.json({ count: row.count });
+    });
+});
+
+// REST API endpoint to delete a user by id
+app.delete('/api/users/:id', (req, res) => {
+    const id = Number(req.params.id);
+    if (!Number.isInteger(id) || id < 1) {
+        return res.status(400).json({ error: 'Invalid user id.' });
+    }
+    db.run('DELETE FROM users WHERE id = ?', [id], function(err) {
+        if (err) return res.status(500).json({error: 'Database error.'});
+        if (this.changes === 0) {
+            return res.status(404).json({error: 'User not found.'});
+        }
+        res.json({ success: true });
     });
 });
 
